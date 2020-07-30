@@ -2,35 +2,31 @@ import client.Client;
 import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.embed.swing.JFXPanel;
-
-import java.io.File;
-import java.util.Objects;
 
 public class Main extends Application {
     private Client client;
 
     public static void main(String[] args) {
         new JFXPanel();
-        Platform.runLater( () ->{
+        Platform.runLater(() -> {
             try {
                 new Main().start(new Stage());
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("Error starting app:" + e);
             }
         });
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        File file = new File("C:\\Java\\server\\src\\main\\resources\\menu.fxml");
-
-        Platform.setImplicitExit(true);
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getClassLoader().getResource(file.getAbsolutePath())));
+        FXMLLoader loader = new FXMLLoader();
+        System.out.println(getClass().getResource("menu.fxml"));
+        loader.setLocation(getClass().getResource("menu.fxml"));
         Parent root = loader.load();
         final Scene scene = new Scene(root);
         Controller controller = loader.getController();

@@ -1,4 +1,6 @@
-import Loader.Loader;
+package server;
+
+import loader.Loader;
 import model.Group;
 import model.Student;
 import model.Students;
@@ -14,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static Loader.Loader.DATE_FORMATTER;
+import static loader.Loader.DATE_FORMATTER;
 
 public class Server {
     private static ServerData serverData;
@@ -88,6 +90,7 @@ class MyServerThread extends Thread{
                 Server.threads.forEach(t -> {
                     t.send(students);
                 });
+                Loader.saveStudent(students);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -103,5 +106,7 @@ class MyServerThread extends Thread{
             e.printStackTrace();
         }
     }
+
+
 
 }

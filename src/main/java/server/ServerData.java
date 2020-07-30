@@ -1,3 +1,5 @@
+package server;
+
 import model.Students;
 
 public class ServerData {

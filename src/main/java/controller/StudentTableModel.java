@@ -9,16 +9,16 @@ import java.util.Date;
 
 public class StudentTableModel {
     private SimpleStringProperty name;
-    private SimpleIntegerProperty number;
-    private SimpleStringProperty department;
+    private SimpleIntegerProperty groupNumber;
+    private SimpleStringProperty groupDepartment;
     private SimpleObjectProperty<Date> date;
     private Student holder;
 
     public StudentTableModel(Student holder) {
         this.holder = holder;
         this.name = new SimpleStringProperty(holder.getName());
-        this.number = new SimpleIntegerProperty(holder.getGroup().getNumber());
-        this.department = new SimpleStringProperty(holder.getGroup().getDepartment());
+        this.groupNumber = new SimpleIntegerProperty(holder.getGroup().getNumber());
+        this.groupDepartment = new SimpleStringProperty(holder.getGroup().getDepartment());
         this.date = new SimpleObjectProperty<>(holder.getDate());
     }
 
@@ -35,30 +35,30 @@ public class StudentTableModel {
         holder.setName(name);
     }
 
-    public int getNumber() {
-        return number.get();
+    public int getGroupNumber() {
+        return groupNumber.get();
     }
 
-    public SimpleIntegerProperty numberProperty() {
-        return number;
+    public SimpleIntegerProperty groupNumberProperty() {
+        return groupNumber;
     }
 
-    public void setNumber(int number) {
-        this.number.set(number);
-        holder.getGroup().setNumber(number);
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber.set(groupNumber);
+        holder.getGroup().setNumber(groupNumber);
     }
 
-    public String getDepartment() {
-        return department.get();
+    public String getGroupDepartment() {
+        return groupDepartment.get();
     }
 
-    public SimpleStringProperty departmentProperty() {
-        return department;
+    public SimpleStringProperty groupDepartmentProperty() {
+        return groupDepartment;
     }
 
-    public void setDepartment(String department) {
-        this.department.set(department);
-        holder.getGroup().setDepartment(department);
+    public void setGroupDepartment(String groupDepartment) {
+        this.groupDepartment.set(groupDepartment);
+        holder.getGroup().setDepartment(groupDepartment);
     }
 
     public Date getDate() {

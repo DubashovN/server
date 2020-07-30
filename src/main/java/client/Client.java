@@ -37,6 +37,7 @@ public class Client {
         try {
             in = new  ObjectInputStream(socket.getInputStream());
             students = (Students) in.readObject();
+            readObjectListener.postRead(students);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

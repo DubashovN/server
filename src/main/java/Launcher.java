@@ -1,3 +1,5 @@
+import server.Server;
+
 import java.util.Arrays;
 
 public class Launcher {
